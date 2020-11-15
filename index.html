@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa e Jardim</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="flex justify-end w-full">
+        <div class="px-3 w-50 flex justify-between items-center" style="display: none">
+            <ul class="flex flex-row p-2">
+                <li class="uppercase p-1"><a class="text-green" href="#">Home</a></li>
+                <li class="uppercase p-1"><a class="text-green" href="#">Abaut</a></li>
+                <li class="uppercase p-1"><a class="text-green" href="#">Contact</a></li>
+            </ul>
+            <button class="w-10 p-1 uppercase font-semibold text-white border-none bg-purple rounded shadow-lg cursor-pointer">
+                Login
+            </button>
+        </div>
+
+        <div class="absolute bg-purple" style="clip-path: circle(60% at 0 0); left: 0; width: 500px; height: 500px; opacity: .4;"></div>        
+    </nav>
+
+    <section class="header px-3 relative flex">
+        <div class="flex justify-around items-center mt-3 p-3 opacity-1">
+            <div class="p-2">
+                <h1 class="uppercase text-blue text-xl">Tudo para o seu jardim</h1>
+                <p class="mt-1 text-lg">
+                    O Melhor lugar para o seu jardim e sua casa,
+                    venha e aproveite nossas promoções.
+                </p>
+            </div>
+        </div>
+        
+        <div class="flex justify-end">
+            <div class="relative">
+                <p id="name-image" class="absolute uppercase text-xl font-bold text-white" style="top: 50px; left: 220px;text-shadow: 1px 1px 1px black;">Bosque</p>
+                <img id="principal" class="w-50 rounded-full" src="assets/jardim.jpg" alt="">
+            </div>
+            <div id="carrosel" class="absolute w-30 flex justify-around">
+                <img id="carrosel-item" data-name="bosque" class="cursor-pointer bg-purple p-sm image-carrosel rounded-full" src="assets/jardim.jpg" alt="">
+                <img id="carrosel-item" data-name="jardim" class="opacity-1 cursor-pointer bg-purple-light p-sm image-carrosel rounded-full" src="assets/jardim2.jpg" alt="">
+                <img id="carrosel-item" data-name="caminho" class="opacity-1 cursor-pointer bg-purple-light p-sm image-carrosel rounded-full" src="assets/jardim3.jpg" alt="">          
+            </div>
+        </div>
+
+       <div class="sociais fixed">
+            <ul>
+                <li><i class="cursor-pointer text-xl p-1 fab fa-instagram"></i></li>
+                <li><i class="cursor-pointer text-xl p-1 fab fa-facebook"></i></li>
+                <li><i class="cursor-pointer text-xl p-1 fab fa-twitter"></i></li>
+            </ul>
+       </div> 
+    </section>
+
+    <section class="w-full" style="margin-top: 200px;">
+        <h1 class="text-center uppercase">Floricultura e Jardinagem</h1>
+        <div class="container__cards flex justify-center items-center flex-wrap">
+            <div class="card_products">
+                <p class="font-bold text-lg">Capin Nativo</p>
+                <ul class="p-2" >
+                    <li>Planta Mediaval</li>
+                    <li>Pode ser exposta ao sol</li>
+                    <li>Tem ate 30 anos de vida</li>
+                </ul>
+                <p class="font-semibold">R$ 500,00</p>
+                <img src="assets/mato.png" alt="mato">  
+            </div>
+
+            <div class="card_products">
+                <p class="font-bold text-lg">Vaso Ortencia</p>
+                <ul class="p-2" >
+                    <li>Planta Mediaval</li>
+                    <li>Pode ser exposta ao sol</li>
+                    <li>Tem ate 30 anos de vida</li>
+                </ul>
+                <p class="font-semibold">R$ 3.500,00</p>
+                <img src="assets/planta.png" alt="mato">  
+            </div>
+
+            <div class="card_products">
+                <p class="font-bold text-lg">Palmeira Pino</p>
+                <ul class="p-2" >
+                    <li>Planta Mediaval</li>
+                    <li>Pode ser exposta ao sol</li>
+                    <li>Tem ate 30 anos de vida</li>
+                </ul>
+                <p class="font-semibold">R$ 4.500,00</p>
+                <img src="assets/planta2.png" alt="mato">  
+            </div>
+
+            <div class="card_products">
+                <p class="font-bold text-lg">Bambu Babu</p>
+                <ul class="p-2" >
+                    <li>Planta Mediaval</li>
+                    <li>Pode ser exposta ao sol</li>
+                    <li>Tem ate 30 anos de vida</li>
+                </ul>
+                <p class="font-semibold">R$ 1.000,00</p>
+                <img src="assets/bambu.png" alt="mato">  
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const principal = document.querySelector("#principal");
+        const carroselItem = document.querySelectorAll("#carrosel-item");
+        const nameImage = document.querySelector("#name-image");
+
+        function selectedCarrosel() {
+            carroselItem.forEach(item => {
+                item.addEventListener('click', () => {
+                    principal.src = item.src
+                    nameImage.innerHTML = item.dataset.name;
+                    
+                    carroselItem.forEach(elem => {
+                        elem.classList.remove('bg-purple')
+                        elem.classList.add('bg-purple-light', 'opacity-1')
+                    })
+
+                    item.classList.add('bg-purple')
+                    item.classList.remove('bg-purple-light', 'opacity-1')
+                })         
+            })
+        }
+
+        selectedCarrosel()
+    </script>
+</body>
+</html>
